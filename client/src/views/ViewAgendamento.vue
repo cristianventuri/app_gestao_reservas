@@ -102,12 +102,16 @@ export default {
     },
 
     async carregaDisponibilidadeHorario() {
+      /* Reset a disponibilidade para posteriormente carregar os horarios corretos */
+      this.horarios.map((horario) => horario.reservado = false);
+      
       const { data } = await Http.post(`reservas-ativas/${this.mesaAtiva}`, { date: moment(this.date).format('YYYY-MM-DD') });
       if (data.length > 0) {
         data.forEach((reserva) => {
           var date = new Date(reserva.rsvDataHora);
-          var horario = this.horarios.find((horario) => (parseInt(date.getHours()) === parseInt(horario.hora)));
-          horario.reservado = (horario != undefined);
+          this.horarios.map((horario) => { 
+            horario.reservado = (parseInt(date.getHours()) === parseInt(horario.hora)) ? true : horario.reservado;
+          });
         });
       } else {
         this.horarios.map((horario) => { horario.reservado = false });

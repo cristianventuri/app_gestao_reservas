@@ -13,7 +13,7 @@ import './assets/styles/base.css';
 /* PrimeVue */
 import "primevue/resources/primevue.min.css";
 import 'primeicons/primeicons.css';
-import './assets/styles/theme.css';
+import "primevue/resources/themes/viva-light/theme.css";     
 import { pt } from "./assets/locales/pt.json"
 
 /* FontAwesome */

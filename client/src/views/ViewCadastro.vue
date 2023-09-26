@@ -25,12 +25,9 @@
 
       <form class="container-formulario-cadastro" @submit.prevent="this.cadastrar()">
         <div class="campos-formulario">
-          <InputText id="username" class="p-inputtext-sm" v-model="this.form.usuario" type="text" placeholder="Usuário"
-            @focus="this.onFocusInput($event)" autocomplete="off" />
-          <Password id="password" class="p-inputtext-sm" v-model="this.form.senha" :feedback="false" toggleMask
-            placeholder="Senha" @focus="this.onFocusInput($event)" />
-          <Password id="confirma_password" class="p-inputtext-sm" v-model="this.form.confirmaSenha" :feedback="false"
-            toggleMask placeholder="Confirmação de Senha" @focus="this.onFocusInput($event)" />
+          <InputText id="username" class="p-inputtext-sm" v-model="this.form.usuario" type="text" placeholder="Usuário" @focus="this.onFocusInput($event)" autocomplete="off" />
+          <Password id="password" class="p-inputtext-sm" v-model="this.form.senha" :feedback="false" toggleMask placeholder="Senha" @focus="this.onFocusInput($event)" />
+          <Password id="confirma_password" class="p-inputtext-sm" v-model="this.form.confirmaSenha" :feedback="false" toggleMask placeholder="Confirmação de Senha" @focus="this.onFocusInput($event)" />
         </div>
         <div class="acao-formulario">
           <RouterLink class="btn-cadastro" to="login">Acessar</RouterLink>

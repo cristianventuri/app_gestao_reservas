@@ -4,16 +4,13 @@
       <p v-html="getStringDataHora"></p>
       <div class="campo">
         <label for="nome_reserva">Solicitante da Reserva: </label><br>
-        <InputText id="nome_reserva" v-model="this.form.nome" aria-describedby="nome_reserva-help"
-          @focus="this.removeClassInvalid" />
+        <InputText id="nome_reserva" v-model="this.form.nome" aria-describedby="nome_reserva-help" @focus="this.removeClassInvalid" autocomplete="off"/>
       </div>
     </div>
 
     <div class="action">
-      <Button class="p-button-danger p-button-rounded p-button-sm p-button-text" label="Cancelar" icon="pi pi-times"
-        @click="this.closeDialog" />
-      <Button class="p-button-primary p-button-rounded p-button-sm p-button-text" label="Confirmar" icon="pi pi-check"
-        @click="this.addReserva" />
+      <Button class="p-button-danger p-button-rounded p-button-sm p-button-text" label="Cancelar" icon="pi pi-times" @click="this.closeDialog" />
+      <Button class="p-button-primary p-button-rounded p-button-sm p-button-text" label="Confirmar" icon="pi pi-check" @click="this.addReserva" />
     </div>
   </div>
 </template>

@@ -104,7 +104,7 @@ export default {
         this.clearMessages();
         this.addClassInvalid(componentePassword);
         this.addClassInvalid(componenteConfirmaPassword);
-        this.mensagem.error = 'As senhas não correspondem, favor, verifique!';
+        this.mensagem.error = 'As senhas não correspondem. Por favor, verifique!';
       } else {
         this.clearMessages();
         this.mensagem.load = "Inserindo credenciais...";

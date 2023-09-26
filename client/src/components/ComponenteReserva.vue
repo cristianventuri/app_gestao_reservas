@@ -4,13 +4,16 @@
       <p v-html="getStringDataHora"></p>
       <div class="campo">
         <label for="nome_reserva">Solicitante da Reserva: </label><br>
-        <InputText id="nome_reserva" v-model="this.form.nome" aria-describedby="nome_reserva-help" @focus="this.removeClassInvalid" />
+        <InputText id="nome_reserva" v-model="this.form.nome" aria-describedby="nome_reserva-help"
+          @focus="this.removeClassInvalid" />
       </div>
     </div>
 
     <div class="action">
-      <Button class="p-button-danger p-button-rounded p-button-sm p-button-text" label="Cancelar" icon="pi pi-times" @click="this.closeDialog" />
-      <Button class="p-button-primary p-button-rounded p-button-sm p-button-text" label="Confirmar" icon="pi pi-check" @click="this.addReserva" />
+      <Button class="p-button-danger p-button-rounded p-button-sm p-button-text" label="Cancelar" icon="pi pi-times"
+        @click="this.closeDialog" />
+      <Button class="p-button-primary p-button-rounded p-button-sm p-button-text" label="Confirmar" icon="pi pi-check"
+        @click="this.addReserva" />
     </div>
   </div>
 </template>
@@ -45,7 +48,7 @@ export default {
 
     getStringDataHora() {
       var arrDataHora = moment(this.dialogRef.data.dataHora).format('DD/MM/YYYY HH:00').split(' ');
-      return  `<b>Atenção</b><br> A reserva da mesa <b>${this.dialogRef.data.mesa}</b> será agendada para o dia <b>${arrDataHora[0]}</b> às <b>${arrDataHora[1]}</b> horas.`
+      return `<b>Atenção</b><br> A reserva da mesa <b>${this.dialogRef.data.mesa}</b> será agendada para o dia <b>${arrDataHora[0]}</b> às <b>${arrDataHora[1]}</b> horas.`
     }
   },
 
@@ -72,7 +75,8 @@ export default {
           this.dialogRef.options.emits.atualizaReservas();
           this.dialogRef.close();
         }).catch((err) => {
-          error('Atenção', 'Não foi possível realizar o agendamento da reserva.');
+          const { message } = err.response.data;
+          error('Atenção', message || 'Não foi possível realizar o agendamento da reserva.');
         });
       }
     },
@@ -80,7 +84,7 @@ export default {
     removeClassInvalid(event) {
       $(event.currentTarget).removeClass('p-invalid');
     },
-    
+
     pressSave(event) {
       if ((event.keyCode === 13)) {
         this.addReserva();

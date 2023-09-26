@@ -16,7 +16,7 @@
         <p>Clique sobre a mesa desejada para visualizar os horários disponíveis para reserva.</p>
       </div>
       <div class="mesas_disponiveis">
-        <button v-for="mesa in mesas" class="item_mesa" :active="mesa.msaId === mesaAtiva" @click="mesaAtiva = mesa.msaId">
+        <button v-for="mesa in mesas" class="item_mesa" :active="mesa.msaId === mesaAtiva" @click="mesaAtiva = mesa.msaId" :title="'Selecionar Mesa ' + mesa.msaId">
           <font-awesome-icon class="mesa_icone" icon="fa-solid fa-utensils" />
           <span class="mesa_id">Mesa {{ mesa.msaId }}</span>
         </button>

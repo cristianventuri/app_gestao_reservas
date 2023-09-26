@@ -55,6 +55,8 @@ router.beforeEach(async (to) => {
   var isLogado = await authUser.validateAuthentication();
   if (authRequired && !isLogado) {
     return '/login';
+  } else if (to.path === '/') {
+    return '/agendamento';
   }
 });
 

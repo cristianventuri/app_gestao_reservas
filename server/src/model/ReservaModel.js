@@ -30,6 +30,19 @@ const getReservasAtivas = async (mesa, params) => {
   return reservas;
 };
 
+const verificaReservaJaExiste = async (reserva) => {
+  const { dataHora, mesa } = reserva;
+  const query = `SELECT reservas.rsvId,
+                        reservas.msaId,
+                        reservas.rsvDataHora
+                   FROM reservas
+                   JOIN mesas
+                     ON mesas.msaId = reservas.msaId
+                  WHERE reservas.msaId = ? AND reservas.rsvDataHora = ?`
+  const [reservas] = await connection.execute(query, [mesa, dataHora]);
+  return reservas.length > 0;
+};
+
 const createReserva = async (reserva) => {
   const { nome, dataHora, user, mesa } = reserva;
   const [createReserva] = await connection.execute('INSERT INTO reservas(rsvNome, rsvDataHora, usrId, msaId) VALUES(?, ?, ?, ?)', [nome, dataHora, user, mesa]);
@@ -52,5 +65,6 @@ module.exports = {
   createReserva,
   updateReserva,
   deleteReserva,
-  getReservasAtivas
+  getReservasAtivas,
+  verificaReservaJaExiste
 };
